@@ -31,8 +31,8 @@ class Producto {
             if(!producto) {
                 console.log("El producto no existe");
             } else {
-                const index = this.producto.indexOf(producto);
-                this.producto.splice(index, 1);
+                const eliminarProducto = this.producto.indexOf(producto);
+                this.producto.splice(eliminarProducto, 1);
                 await this.guardarArchivo();
             }
         }
