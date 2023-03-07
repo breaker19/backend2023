@@ -1,0 +1,57 @@
+[
+  {
+    "producto": "Coca Cola",
+    "precio": 1.5,
+    "cantidad": 1,
+    "id": "e5c0fb3b-5559-4814-95dc-ee08275434b5"
+  },
+  {
+    "producto": "Pepsi",
+    "precio": 1.5,
+    "cantidad": 1,
+    "id": "7286f566-1f1c-4444-98e0-3b089b48b152"
+  },
+  {
+    "producto": "Agua",
+    "precio": 1.5,
+    "cantidad": 1,
+    "id": "bb979a57-85bd-4cae-b6c0-70ff8696ef5d"
+  },
+  {
+    "producto": "Cerveza",
+    "precio": 1.5,
+    "cantidad": 1,
+    "id": "ef867fd0-648f-4916-a6de-307163aea955"
+  },
+  {
+    "producto": "Vino",
+    "precio": 1.5,
+    "cantidad": 1,
+    "id": "9d860a7e-dc31-4886-945e-a727d8b2fcf5"
+  },
+  {
+    "producto": "Cerveza",
+    "precio": 1.5,
+    "cantidad": 1,
+    "id": "bea3ea7c-80e2-4bcb-ae51-640fc141c7e8"
+  },
+
+  {
+    "id": "884d3c97-01f4-4571-838e-372733537607",
+    "producto": "Chips",
+    "precio": 200,
+    "cantidad": 20
+  },
+  {
+    "id": "111cc11d-ac3d-4b32-a5e8-55affdfdf6ff",
+    "producto": "Pizza",
+    "precio": "41.59",
+    "cantidad": 20
+  },
+  {
+    "id": "7551a9d8-e704-4d52-b1d4-02c71f1261d8",
+    "producto": "Pollo",
+    "precio": "810.24",
+    "cantidad": 20
+  }
+]

@@ -1,5 +1,10 @@
 import fs from 'fs/promises'
-class Producto {
+import http from 'http'
+import { randomUUID } from 'crypto'
+import { faker } from '@faker-js/faker';
+faker.locale = 'es';
+
+export class Producto {
 
     constructor(ruta) {
         this.ruta = ruta;
@@ -14,8 +19,10 @@ class Producto {
         async guardarArchivo() {
             const json = JSON.stringify(this.producto, null, 2);
             await fs.writeFile(this.ruta, json);
+       
+
         }
-        async mostrarProductos() {
+         async mostrarProductos() {
          await this.leerArchivo();
          console.log(this.producto);
         }
@@ -24,6 +31,25 @@ class Producto {
             this.producto.push(nuevoProducto);
             await this.guardarArchivo();
         }
+        async agregarIdsAProductos() {
+            await this.leerArchivo();
+            this.producto = this.producto.map((producto) => {
+              if (!producto.id) {
+                return { ...producto, id: randomUUID() };
+              }
+              return producto;
+            });
+            await this.guardarArchivo();
+          }
+
+        async searchById(id) {
+            await this.leerArchivo();
+            const producto = this.producto.find((producto) => producto.id === id);
+            return producto;
+        }
+       
+
+
         
         async deleteProducto(id) {
             await this.leerArchivo();
@@ -36,27 +62,34 @@ class Producto {
                 await this.guardarArchivo();
             }
         }
-}
+    }
 
-const producto = new Producto('products.txt');
-// await producto.mostrarProductos();
-// await producto.agregarProductos({id: 15,"producto": "manaos", "precio": 200, "cantidad": 20 });
-// await producto.mostrarProductos();
+    
 
-async function progreso(){
+
+
+const producto = new Producto('products.json');
+
+export async function progreso(){
     await producto.mostrarProductos();
-    await producto.agregarProductos({"id": 8, "producto": "manaos", "precio": 200, "cantidad": 20 })
+
+    await producto.agregarProductos({"id": randomUUID()
+    , "producto": faker.commerce.product() , "precio": faker.finance.amount(), "cantidad": 20 })
+  
     
 
     await producto.mostrarProductos();
     await producto.deleteProducto(3);
     console.log("Producto eliminado");
     await producto.mostrarProductos();
+    await producto.agregarIdsAProductos();
+    await producto.guardarArchivo();
+    await producto.mostrarProductos();
+    await producto.searchById();
 
-}
+  }
 
-progreso();
-
+await progreso();
 
 
 
