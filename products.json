@@ -35,23 +35,76 @@
     "cantidad": 1,
     "id": "bea3ea7c-80e2-4bcb-ae51-640fc141c7e8"
   },
-
   {
-    "id": "884d3c97-01f4-4571-838e-372733537607",
-    "producto": "Chips",
-    "precio": 200,
+    "id": "28c43a12-6b79-407c-9330-9e1e65ca4627",
+    "producto": "Ensalada",
+    "precio": "363.31",
     "cantidad": 20
   },
   {
-    "id": "111cc11d-ac3d-4b32-a5e8-55affdfdf6ff",
-    "producto": "Pizza",
-    "precio": "41.59",
+    "id": "4a8582a1-d2a5-43a2-86b2-973d17daa284",
+    "producto": "Bacon",
+    "precio": "415.44",
     "cantidad": 20
   },
   {
-    "id": "7551a9d8-e704-4d52-b1d4-02c71f1261d8",
-    "producto": "Pollo",
-    "precio": "810.24",
+    "id": "ac0f89b8-9f53-40da-9cd7-3c75d7d8343f",
+    "producto": "Bicicleta",
+    "precio": "521.00",
+    "cantidad": 20
+  },
+  {
+    "id": "6a4537b8-5995-470e-a68d-c6af8a6c94a4",
+    "producto": "Teclado",
+    "precio": "26.91",
+    "cantidad": 20
+  },
+  {
+    "id": "538cef46-f9c6-40b6-a3fb-fbf437fbb6e2",
+    "producto": "Bacon",
+    "precio": "833.87",
+    "cantidad": 20
+  },
+  {
+    "id": "56fe9c04-c309-4bf8-b2e8-194b29eb3cac",
+    "producto": "Raton",
+    "precio": "686.52",
+    "cantidad": 20
+  },
+  {
+    "id": "d6b6ca62-adff-4f96-b66e-5a0b38e77e67",
+    "producto": "Pantalones",
+    "precio": "897.78",
+    "cantidad": 20
+  },
+  {
+    "id": "d7acec8a-c11e-4eee-8262-6b78c7c23683",
+    "producto": "Patatas fritas",
+    "precio": "546.31",
+    "cantidad": 20
+  },
+  {
+    "id": "c0d3d703-3fa9-4412-8184-31ca98f88d86",
+    "producto": "Raton",
+    "precio": "137.47",
+    "cantidad": 20
+  },
+  {
+    "id": "34f5b69d-e564-4a48-bc94-8dd307d999ab",
+    "producto": "Pelota",
+    "precio": "235.49",
+    "cantidad": 20
+  },
+  {
+    "id": "27a514ad-35ad-48e3-9562-02cf00df3065",
+    "producto": "Silla",
+    "precio": "130.30",
+    "cantidad": 20
+  },
+  {
+    "id": "e7817d95-f4cf-4efa-917c-e340e7722434",
+    "producto": "Salchichas",
+    "precio": "84.89",
     "cantidad": 20
   }
 ]

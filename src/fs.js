@@ -90,11 +90,3 @@ export async function progreso(){
   }
 
 await progreso();
-
-
-
-
-
-
-
-
