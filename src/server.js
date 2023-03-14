@@ -8,16 +8,4 @@ app.use("/", productRouter);
 app.use("/", cartRouter);
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 const server = app.listen(3004)

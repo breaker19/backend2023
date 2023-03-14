@@ -11,17 +11,31 @@ export class Cart {
         const json = await fs.readFile(this.ruta, 'utf-8');
         this.producto = JSON.parse(json);
         }
+        async guardarArchivo() {
+          const json = JSON.stringify(this.producto, null, 2);
+          await fs.writeFile(this.ruta, json);
+        }
+     
+
+        async getproductByCartId(cid) {
+            await this.leerArchivo();
+            const carrito = this.producto.find((carrito) => carrito.cid === cid);
+            return carrito;
+          }
     }
+    
 
 const cart = new Cart('cart.json');
+const producto = new Producto('products.json');
 
-export async function agregarProducto(id, producto) {
+const agregarProductoAlCarrito = async (cid, id) => {
     await cart.leerArchivo();
-    const carrito = cart.producto.find((carrito) => carrito.id === id);
+    await producto.leerArchivo();
+    const carrito = await cart.getproductByCartId(cid);
+    const productoAgregado = producto.producto.find((producto) => producto.id === id);
     if (!carrito) {
-      cart.producto.push({ id, productos: [producto] });
-    } else {
-      carrito.productos.push(producto);
-    }
+      cart.producto.push({ cid: cid, producto: [productoAgregado] });
+    } 
     await cart.guardarArchivo();
-  }
+  };
+  agregarProductoAlCarrito()
