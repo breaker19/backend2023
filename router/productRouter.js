@@ -1,7 +1,7 @@
 import express, { query } from 'express'
 import  {Producto} from '../src/fs.js'
-
 import { Router } from 'express';
+import mongoose from 'mongoose';
 const producto = new Producto('products.json');
 export const productRouter = Router();
 
@@ -24,7 +24,12 @@ productRouter.get('/productos', async (req, res) => {
     });
 
  
- 
-
+//  productRouter.post('/productos', async (req, res, next) => {
+//   //use mongoDb.js to save the product
+//   const datos = req.body;
+//   const result = await productosDb (datos);
+//   res.send(result);
+//   next();
+// });
     
    

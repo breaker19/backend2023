@@ -40,5 +40,3 @@ cartRouter.post("/cart/:cid/:id", async (req, res) => {
     res.send(cart.producto);
   }
 );
-
-
