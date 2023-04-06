@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 import productos from '../products.json' assert { type: 'json' }
 const Schema = mongoose.Schema;
-const connection = await mongoose.connect("mongodb+srv://sebakarp26:floresycolores@test.ctqc9tr.mongodb.net/Eccommerce?retryWrites=true&w=majority");
+const connection = await mongoose.connect("mongodb+srv://sebakarp26:pass@test.ctqc9tr.mongodb.net/Eccommerce?retryWrites=true&w=majority");
 
  const productosMongoose= mongoose.connection.db.collection("products");
 
