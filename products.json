@@ -2,187 +2,31 @@
   {
     "producto": "Coca Cola",
     "precio": 1.5,
-    "cantidad": 1,
+    "stock": 10,
     "id": "e5c0fb3b-5559-4814-95dc-ee08275434b5"
   },
   {
     "producto": "Pepsi",
     "precio": 1.5,
-    "cantidad": 1,
+    "stock": 21,
     "id": "7286f566-1f1c-4444-98e0-3b089b48b152"
   },
   {
     "producto": "Agua",
     "precio": 1.5,
-    "cantidad": 1,
+    "stock": 15,
     "id": "bb979a57-85bd-4cae-b6c0-70ff8696ef5d"
   },
   {
     "producto": "Cerveza",
     "precio": 1.5,
-    "cantidad": 1,
+    "stock": 11,
     "id": "ef867fd0-648f-4916-a6de-307163aea955"
   },
   {
     "producto": "Vino",
     "precio": 1.5,
-    "cantidad": 1,
+    "stock": 100,
     "id": "9d860a7e-dc31-4886-945e-a727d8b2fcf5"
-  },
-  {
-    "producto": "Cerveza",
-    "precio": 1.5,
-    "cantidad": 1,
-    "id": "bea3ea7c-80e2-4bcb-ae51-640fc141c7e8"
-  },
-  {
-    "id": "1679a3ed-bc5f-485c-8f92-2760b200fe0b",
-    "producto": "Raton",
-    "precio": "107.34",
-    "cantidad": 20
-  },
-  {
-    "id": "cca05f9f-9cd0-4c7a-9f4c-42e5636ed905",
-    "producto": "Guantes",
-    "precio": "799.53",
-    "cantidad": 20
-  },
-  {
-    "id": "35844043-e1ca-442e-8fda-22808807f17e",
-    "producto": "Toallas",
-    "precio": "520.68",
-    "cantidad": 20
-  },
-  {
-    "id": "34a79589-b2f5-4339-8be2-6edc9fe297fd",
-    "producto": "Sopa",
-    "precio": "924.25",
-    "cantidad": 20
-  },
-  {
-    "id": "65d73a8b-590a-4f2a-bc54-53ff12b316cc",
-    "producto": "Silla",
-    "precio": "638.74",
-    "cantidad": 20
-  },
-  {
-    "id": "5c1180fb-b5ba-4659-af10-b5aadd90e6ad",
-    "producto": "Queso",
-    "precio": "285.85",
-    "cantidad": 20
-  },
-  {
-    "id": "603ea66c-e04b-4a2d-be70-288dd4533701",
-    "producto": "Mesa",
-    "precio": "235.10",
-    "cantidad": 20
-  },
-  {
-    "id": "d9485107-480e-441d-bc7b-fc88203e92ca",
-    "producto": "Pizza",
-    "precio": "498.71",
-    "cantidad": 20
-  },
-  {
-    "id": "ae623b19-6822-43c7-9035-e9c68092821a",
-    "producto": "Raton",
-    "precio": "968.09",
-    "cantidad": 20
-  },
-  {
-    "id": "08f86b01-8ada-407b-b01e-b4438b6319eb",
-    "producto": "Queso",
-    "precio": "584.96",
-    "cantidad": 20
-  },
-  {
-    "id": "0a52e12a-2397-4607-af6b-b0f15afa6028",
-    "producto": "Bicicleta",
-    "precio": "52.06",
-    "cantidad": 20
-  },
-  {
-    "id": "8bc28e59-6fd2-4f7c-ae1a-3f8f79673062",
-    "producto": "Patatas fritas",
-    "precio": "683.59",
-    "cantidad": 20
-  },
-  {
-    "id": "c2ecde7e-c45c-491c-8ead-98f70d4780cb",
-    "producto": "Camiseta",
-    "precio": "474.50",
-    "cantidad": 20
-  },
-  {
-    "id": "454e047c-eb37-40f9-a240-f9f953bcfdb3",
-    "producto": "Pizza",
-    "precio": "262.33",
-    "cantidad": 20
-  },
-  {
-    "id": "2d1af2cc-649d-49a3-afd2-f892c6a1674f",
-    "producto": "Pantalones",
-    "precio": "24.21",
-    "cantidad": 20
-  },
-  {
-    "id": "b6bb4430-ea43-47a2-9b4a-7a4b41e91f33",
-    "producto": "Ordenador",
-    "precio": "433.38",
-    "cantidad": 20
-  },
-  {
-    "id": "4b73ad8a-53cf-47e1-944b-2d30353174b9",
-    "producto": "Bacon",
-    "precio": "767.77",
-    "cantidad": 20
-  },
-  {
-    "id": "93bde648-ccd5-491e-afd2-d58ac6e55e53",
-    "producto": "Bicicleta",
-    "precio": "118.98",
-    "cantidad": 20
-  },
-  {
-    "id": "f15cb8de-d34f-40bc-8e5b-f9fc6a70ae2c",
-    "producto": "Silla",
-    "precio": "610.16",
-    "cantidad": 20
-  },
-  {
-    "id": "f7a97385-b739-4024-a3f3-76b1d65b9352",
-    "producto": "Mesa",
-    "precio": "742.21",
-    "cantidad": 20
-  },
-  {
-    "id": "43e2c590-2b6b-4970-8bba-e76ea2a42958",
-    "producto": "Pantalones",
-    "precio": "533.87",
-    "cantidad": 20
-  },
-  {
-    "id": "67968682-4651-4400-8849-824b7838bcff",
-    "producto": "Guantes",
-    "precio": "631.58",
-    "cantidad": 20
-  },
-  {
-    "id": "cd073015-cf53-4802-9c5d-559ff1709881",
-    "producto": "Queso",
-    "precio": "828.57",
-    "cantidad": 20
-  },
-  {
-    "id": "9ebab8dc-e9cd-4593-88c9-d76a072575e7",
-    "producto": "Zapatos",
-    "precio": "161.85",
-    "cantidad": 20
-  },
-  {
-    "id": "c480b742-5201-45e4-a925-3a9cee67bdcd",
-    "producto": "Pantalones",
-    "precio": "391.31",
-    "cantidad": 20
   }
 ]

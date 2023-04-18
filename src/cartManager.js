@@ -1,7 +1,8 @@
 import fs from 'fs/promises'
 import { randomUUID } from 'crypto';
 import  {Producto} from '../src/fs.js'
-
+import ProductoMongoose from '../dao/mongoose.js'
+import { log } from 'console';
 export class Cart {
 
     constructor(ruta) {
@@ -23,10 +24,14 @@ export class Cart {
             return carrito;
           }
     }
+
+   
+     
     
 
 const cart = new Cart('cart.json');
 const producto = new Producto('products.json');
+
 
 const agregarProductoAlCarrito = async (cid, id) => {
     await cart.leerArchivo();
@@ -37,5 +42,7 @@ const agregarProductoAlCarrito = async (cid, id) => {
       cart.producto.push({ cid: cid, producto: [productoAgregado] });
     } 
     await cart.guardarArchivo();
+    await Producto.leerArchivo();
+    console.log("los productos de mongoose",  Producto.producto)
   };
   agregarProductoAlCarrito()

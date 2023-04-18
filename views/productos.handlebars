@@ -1,0 +1,14 @@
+
+<!-- layouts/main.hbs -->
+<h1>Productos </h1>
+<div class="row">
+  {{#each productosdos}} <!-- Usar el nombre correcto del arreglo de datos -->
+    <div class="col-md-3">
+      <h3>{{this.producto}}</h3>
+      <p>Precio: {{this.precio}}</p>
+      <p>Stock {{this.cantidad}}</p>
+      <!-- agregar un boton para agregar al carrito y descontar 1 del stock -->
+      <a href="/carrito/{{this._id}}">Agregar al carrito</a>
+    </div>
+  {{/each}}
+</div>

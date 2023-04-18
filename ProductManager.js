@@ -1,3 +1,4 @@
+import ProductoMongoose from "./dao/mongoose.js";
 class ProductManager
 {
     constructor()
@@ -5,10 +6,12 @@ class ProductManager
         this.products = [];
     }
 
-    getProducts()
-    {
-        return this.products;
-    }
+    async getProducts(options = {}) {
+        const products = await ProductoMongoose.getProducts(options)
+        return products
+      
+      
+      }
 
     addProduct(product)
     {
@@ -61,9 +64,8 @@ class Product
 
 const manajarProductos = new ProductManager();
 
-manajarProductos.addProduct(new Product (this.id,"La Torre Oscura", 12000,"Stephen King","La Torre Oscura es una saga de libros escrita por el autor estadounidense Stephen King, que incorpora temas de múltiples géneros, incluyendo fantasía, fantasía científica, terror y wéstern. Describe a un pistolero y su búsqueda de una torre, cuya naturaleza es tanto física como metafórica.","Libro","https://images-na.ssl-images-amazon.com/images/I/51ZQYQZQFJL._SX331_BO1,204,203,200_.jpg"));
+manajarProductos.addProduct
 
-manajarProductos.addProduct(new Product (this.id, "El Hobbit", 10000,"J.R.R. Tolkien","El Hobbit es una novela fantástica escrita por el escritor británico J. R. R. Tolkien y publicada en 1937. Es una historia de aventuras y viajes, que narra la historia de un hobbit llamado Bilbo Bolsón, que emprende un viaje con trece enanos para recuperar el tesoro que les fue robado por el dragón Smaug.","Libro","https://images-na.ssl-images-amazon.com/images/I/51ZQYQZQFJL._SX331_BO1,204,203,200_.jpg"));
 
 
 console.log(manajarProductos.getProducts()) //devuelve todos los productos y les asigna un id
@@ -71,7 +73,7 @@ console.log(manajarProductos.getProduct(1)); //devuelve el producto con id 1
 console.log(manajarProductos.getProduct(3));// el producto con id 3 no existe devuelve el error
 ;
 
-
+export { manajarProductos}
 
 
 

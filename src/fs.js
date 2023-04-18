@@ -73,8 +73,11 @@ const producto = new Producto('products.json');
 export async function progreso(){
     await producto.mostrarProductos();
 
-    await producto.agregarProductos({"id": randomUUID()
-    , "producto": faker.commerce.product() , "precio": faker.finance.amount(), "cantidad": 20 })
+//     await producto.agregarProductos({"id": randomUUID()
+//     , "producto": faker.commerce.product() , "precio": faker.finance.amount(), "cantidad": 20 }) 
+    
+
+
   
     
 
