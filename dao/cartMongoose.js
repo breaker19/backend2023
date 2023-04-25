@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 
 
-const connection = await mongoose.connect("mongodb+srv://sebakarp26:floresycolores@test.ctqc9tr.mongodb.net/Eccommerce?retryWrites=true&w=majority");
+const connection = await mongoose.connect("mongodb+srv://sebakarp26:test@test.ctqc9tr.mongodb.net/Eccommerce?retryWrites=true&w=majority");
 
 
 const cartSchema = new mongoose.Schema({
