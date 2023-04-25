@@ -5,12 +5,15 @@ const connection = await mongoose.connect("mongodb+srv://sebakarp26:floresycolor
 
 
 const cartSchema = new mongoose.Schema({
-  productId: { type: String, required: true },
-  stock: { type: Number, default: 1 },
-  producto : { type: String, required: true },
-    precio : { type: Number, required: true },
+  productId: String,
+  producto: String,
+  precio: Number,
+  stock: Number,
 });
 
-const Cart = mongoose.model('Carts', cartSchema);
+const Cart = mongoose.model('Carts', cartSchema); // Carts es el nombre de la collection en mongodb
+
+
+
 
 export default Cart;

@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 import mongoosePaginate from 'mongoose-paginate-v2'
 
 const Schema = mongoose.Schema;
-const connection = await mongoose.connect("mongodb+srv://sebakarp26:floresycolores@test.ctqc9tr.mongodb.net/Eccommerce?retryWrites=true&w=majority");
+export const connection = await mongoose.connect("mongodb+srv://sebakarp26:floresycolores@test.ctqc9tr.mongodb.net/Eccommerce?retryWrites=true&w=majority");
 
  const productosMongoose= mongoose.connection.db.collection("products");
 
@@ -13,18 +13,9 @@ export const productoSchema = new Schema({
     precio: Number,});
     const ProductoMongoose = mongoose.model('products', productoSchema);
   
-// const agregarNuevos = await Producto.insertMany(productos);
-
-// const deleteProducto = await Producto.deleteOne({producto: "Agua"});
-
-// const updateProducto = await Producto.updateOne({producto: "Coca Cola"}, {$set: {producto: "Pepsi"}});
-
-
-
-// const match = await ProductoMongoose({$match : {producto: "Coca Cola"}})
-// console.log(match)
-//ver todos los productos
 const matchd = await ProductoMongoose.find()
+const deleteProducto = await ProductoMongoose.deleteMany({precio: {$gt: 300}});
+
 console.log(matchd)
 
 

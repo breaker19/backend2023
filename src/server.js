@@ -1,45 +1,51 @@
 import express, { Router } from 'express'
 import { productRouter } from '../router/productRouter.js';
-// import { cartRouter } from '../router/cartRouter.js';
 import { engine } from 'express-handlebars'
-import ProductoMongoose from '../dao/mongoose.js';
-import exphbs from 'express-handlebars'
-//importar products.json
-// import  products  from '../products.json' assert { type: 'json' };
+import { postUsuarios } from './controllers/api/usuarios.controllers.js';
+import { registroUsuario } from './controllers/web/registro.controller.js';
+import mongoose from 'mongoose';
+import { MONGODB_CNX_STR } from '../config/mongoDb.config.js';
+import { listarProductos } from './controllers/api/listarProductos.js';
+import { cartUpdate } from './controllers/api/cartUpdate.js';
+import MongoStore from 'connect-mongo';
+import session from 'express-session';
+import { autenticacion } from './middlewares/autenticacion.js';
+
+ await mongoose.connect(MONGODB_CNX_STR, {
+
+});
 
 
 const app = express()
 app.use("/", productRouter);
-// app.use("/", cartRouter);
-// Configurar Handlebars como motor de plantillas con opción de compatibilidad
-const hbs = exphbs.create({ compat: true, allowProtoPropertiesByDefault: true });
-app.engine('handlebars', hbs.engine);
-app.set('views', './views');
-app.set('view engine', 'handlebars');
+app.use(express.static('public'))
+app.use(express.json());
+app.engine('handlebars', engine())
+app.set('views', './views')
+app.set('view engine', 'handlebars')
 
 
-app.get('/listados', async (req, res) => {
-  try {
-    const productosdos = await ProductoMongoose.find().lean();
+app.use(session({
+  secret: '2ffffff',
+  resave: true,
+  saveUninitialized: true
+})); 
 
-    res.render('productos', { productosdos});
-  } catch (err) {
-    console.error(err);
-    res.status(500).send('Error interno del servidor');
-  }
-  
-});
-app.get('/carrito/:id', async (req, res) => {
-  try {
-    const productId = req.params.id;
-    const producto = await ProductoMongoose.findById(productId).lean();
-    console.log(producto)
-    res.render('carrito', { producto }); 
-  } catch (err) {
-    console.error(err);
-    res.status(500).send('Error interno del servidor');
-  }
-});
 
+app.get('/listados', listarProductos, autenticacion);
+
+app.get('/carrito/:id', cartUpdate);
+
+app.get('/register/', registroUsuario)
+
+app.get('/profile/', autenticacion, (req, res) => {
+ res.render('profile', { pageTitle: 'Profile', usuarios: JSON.stringify(req.session.usuarios)})
+})
+   
+app.post('/api/usuarios/', postUsuarios )
 
 const server = app.listen(3004)
+
+server.on('listening', () => {
+  console.log('Servidor escuchando en puerto 3004')
+})
