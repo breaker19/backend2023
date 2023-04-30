@@ -1,8 +1,8 @@
 import mongoose from "mongoose";
+import { MONGODB_CNX_STR } from '../config/mongoDb.config.js';
 
-
-const connection = await mongoose.connect("mongodb+srv://sebakarp26:test@test.ctqc9tr.mongodb.net/Eccommerce?retryWrites=true&w=majority");
-
+const Schema = mongoose.Schema;
+await mongoose.connect(MONGODB_CNX_STR);
 
 const cartSchema = new mongoose.Schema({
   productId: String,
@@ -11,9 +11,6 @@ const cartSchema = new mongoose.Schema({
   stock: Number,
 });
 
-const Cart = mongoose.model('Carts', cartSchema); // Carts es el nombre de la collection en mongodb
-
-
-
+const Cart = mongoose.model('Carts', cartSchema);
 
 export default Cart;

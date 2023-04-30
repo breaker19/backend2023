@@ -1,20 +1,26 @@
 import mongoose from "mongoose";
 import mongoosePaginate from 'mongoose-paginate-v2'
+import { MONGODB_CNX_STR } from '../config/mongoDb.config.js';
 
 const Schema = mongoose.Schema;
-export const connection = await mongoose.connect("mongodb+srv://sebakarp26:floresycolores@test.ctqc9tr.mongodb.net/Eccommerce?retryWrites=true&w=majority");
+await mongoose.connect(MONGODB_CNX_STR, {
+
+});
 
  const productosMongoose= mongoose.connection.db.collection("products");
 
 // const productoEncontrado= await productosMongoose.findOne()
 
 export const productoSchema = new Schema({
+    productId: String,
     producto: String,
-    precio: Number,});
+    precio: Number,
+    stock: Number,
+});
     const ProductoMongoose = mongoose.model('products', productoSchema);
   
 const matchd = await ProductoMongoose.find()
-const deleteProducto = await ProductoMongoose.deleteMany({precio: {$gt: 300}});
+// const deleteProducto = await ProductoMongoose.deleteMany({precio: {$gt: 300}});
 
 console.log(matchd)
 

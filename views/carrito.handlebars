@@ -1,7 +1,14 @@
-<h1>Carrito de compras</h1>
-<div>
-  <h3>{{producto.producto}}</h3>
-  <p>Precio del producto: {{producto.precio}}</p>
-  <p>Stock: {{producto.cantidad}}</p>
- 
-</div>
+{{#if cartItems}}
+  <ul>
+    {{#each cartItems}}
+      <li style="margin-top:30px">
+       <strong>seleccionado:</strong>  {{producto}} -<br>
+       <strong> precio del producto:</strong>{{precio}} -<br>
+     <strong>id del producto: </strong> {{productId}}
+     <strong>Stock:</strong> {{stock}}
+      </li>
+    {{/each}}
+  </ul>
+{{else}}
+  <p>No hay productos en el carrito</p>
+{{/if}}

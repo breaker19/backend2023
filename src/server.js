@@ -6,10 +6,11 @@ import { registroUsuario } from './controllers/web/registro.controller.js';
 import mongoose from 'mongoose';
 import { MONGODB_CNX_STR } from '../config/mongoDb.config.js';
 import { listarProductos } from './controllers/api/listarProductos.js';
-import { cartUpdate } from './controllers/api/cartUpdate.js';
+import { cartUpdate} from './controllers/api/cartUpdate.js';
 import MongoStore from 'connect-mongo';
 import session from 'express-session';
 import { autenticacion } from './middlewares/autenticacion.js';
+import { cartView } from './controllers/api/cartView.js';
 
  await mongoose.connect(MONGODB_CNX_STR, {
 
@@ -32,9 +33,13 @@ app.use(session({
 })); 
 
 
-app.get('/listados', listarProductos, autenticacion);
-
+app.get('/listados/', listarProductos, autenticacion)
+app.get('/carrito/', cartUpdate);
 app.get('/carrito/:id', cartUpdate);
+
+app.get('/carrito-vista', cartView);
+
+
 
 app.get('/register/', registroUsuario)
 

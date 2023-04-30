@@ -1,7 +1,9 @@
 
 <!-- layouts/main.hbs -->
 <h1>Productos </h1>
-<h2>Bienvenido</h2> {{{usuarios}}}
+ <!--ver solo el nombre del usuario logueado -->
+ <h2>Usuario: {{usuarios}}</h2>
+
 <div class="row">
   {{#each productosdos}} <!-- Usar el nombre correcto del arreglo de datos -->
     <div class="col-md-3">
