@@ -11,6 +11,9 @@ import MongoStore from 'connect-mongo';
 import session from 'express-session';
 import { autenticacion } from './middlewares/autenticacion.js';
 import { cartView } from './controllers/api/cartView.js';
+import { loginView } from './controllers/web/login.controller.js';
+import { antenticacionPorGithub_CB, autenticacionPorGithub, passportInitialize, passportSession } from './middlewares/passport.js';
+import { githubRouter } from '../router/githubRouter.js';
 
  await mongoose.connect(MONGODB_CNX_STR, {
 
@@ -19,6 +22,7 @@ import { cartView } from './controllers/api/cartView.js';
 
 const app = express()
 app.use("/", productRouter);
+// app.use("/", githubRouter)
 app.use(express.static('public'))
 app.use(express.json());
 app.engine('handlebars', engine())
@@ -27,10 +31,13 @@ app.set('view engine', 'handlebars')
 
 
 app.use(session({
-  secret: '2ffffff',
-  resave: true,
-  saveUninitialized: true
+  store: MongoStore.create({ mongoUrl: MONGODB_CNX_STR }),
+  secret: 'SESSION_SECRET',
+  resave: false,
+  saveUninitialized: false
 })); 
+app.use(passportInitialize, passportSession)
+
 
 
 app.get('/listados/', listarProductos, autenticacion)
@@ -38,8 +45,10 @@ app.get('/carrito/', cartUpdate);
 app.get('/carrito/:id', cartUpdate);
 
 app.get('/carrito-vista', cartView);
+app.get('/login', loginView);
 
-
+app.get('/github', autenticacionPorGithub)
+app.get('/githubcallback', antenticacionPorGithub_CB, (req, res, next) => { res.redirect('/') })
 
 app.get('/register/', registroUsuario)
 
@@ -48,6 +57,7 @@ app.get('/profile/', autenticacion, (req, res) => {
 })
    
 app.post('/api/usuarios/', postUsuarios )
+app.post('/api/login/', loginView)
 
 const server = app.listen(3004)
 
