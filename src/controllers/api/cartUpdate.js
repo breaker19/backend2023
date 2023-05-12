@@ -47,3 +47,4 @@ export async function cartUpdate(req, res) {
 
 // Agrega la ruta cartView
 app.get('/carrito-vista', cartView);
+

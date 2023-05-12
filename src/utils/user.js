@@ -1,9 +1,9 @@
 export class User {
-    constructor({ email, password, nombre, apellido, edad }) {
+   
+    constructor({ email, password, name, age }) {
         this.email = email
         this.password = password
-        this.nombre = nombre
-        this.apellido = apellido
-        this.edad = edad
+        this.name = name
+        this.age = age
     }
 }

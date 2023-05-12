@@ -14,7 +14,8 @@ import { cartView } from './controllers/api/cartView.js';
 import { loginView } from './controllers/web/login.controller.js';
 import { antenticacionPorGithub_CB, autenticacionPorGithub, passportInitialize, passportSession } from './middlewares/passport.js';
 import { githubRouter } from '../router/githubRouter.js';
-
+import  {usuarios}  from '../models/usuario.mongoose.js';
+import { userRouter } from '../router/userRouter.js';
  await mongoose.connect(MONGODB_CNX_STR, {
 
 });
@@ -22,6 +23,7 @@ import { githubRouter } from '../router/githubRouter.js';
 
 const app = express()
 app.use("/", productRouter);
+app.use("/", userRouter)
 // app.use("/", githubRouter)
 app.use(express.static('public'))
 app.use(express.json());
@@ -39,6 +41,7 @@ app.use(session({
 app.use(passportInitialize, passportSession)
 
 
+try {userRouter}catch (error) { console.log(error)}
 
 app.get('/listados/', listarProductos, autenticacion)
 app.get('/carrito/', cartUpdate);
@@ -48,19 +51,34 @@ app.get('/carrito-vista', cartView);
 app.get('/login', loginView);
 
 app.get('/github', autenticacionPorGithub)
-app.get('/githubcallback', antenticacionPorGithub_CB, (req, res, next) => { res.redirect('/') })
+app.get('/githubcallback', antenticacionPorGithub_CB, (req, res, next) => 
+{ res.redirect('/')
+console.log(req.session)
+})
 
 app.get('/register/', registroUsuario)
 
 app.get('/profile/', autenticacion, (req, res) => {
  res.render('profile', { pageTitle: 'Profile', usuarios: JSON.stringify(req.session.usuarios)})
 })
+// app.get("/api/sessions/githubcallback", (req, res, next) => {
+//   console.log(req.session)
+//   res.send("ok")
+// })
+
    
 app.post('/api/usuarios/', postUsuarios )
 app.post('/api/login/', loginView)
+
+
+
+
+
+
 
 const server = app.listen(3004)
 
 server.on('listening', () => {
   console.log('Servidor escuchando en puerto 3004')
 })
+
