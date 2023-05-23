@@ -1,6 +1,6 @@
-import ProductoMongoose from "../dao/mongoose.js";
+import ProductoMongoose from "../../../dao/mongoose.js";
 
-import { manajarProductos} from "../ProductManager.js"
+import { manajarProductos} from "../../../ProductManager.js"
 
 
 const mongooseProducto = new ProductoMongoose('products.json');

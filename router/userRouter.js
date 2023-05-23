@@ -23,3 +23,6 @@ userRouter.get ('/api/usuarios/', async (req, res) => {
         res.json(nuevoUsuario)
       })
 
+
+
+

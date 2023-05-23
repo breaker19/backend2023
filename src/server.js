@@ -16,6 +16,7 @@ import { antenticacionPorGithub_CB, autenticacionPorGithub, passportInitialize, 
 import { githubRouter } from '../router/githubRouter.js';
 import  {usuarios}  from '../models/usuario.mongoose.js';
 import { userRouter } from '../router/userRouter.js';
+import passport from 'passport';
  await mongoose.connect(MONGODB_CNX_STR, {
 
 });
@@ -23,6 +24,7 @@ import { userRouter } from '../router/userRouter.js';
 
 const app = express()
 app.use("/", productRouter);
+app.use("/api/sessions", githubRouter);
 app.use("/", userRouter)
 // app.use("/", githubRouter)
 app.use(express.static('public'))
@@ -69,8 +71,24 @@ app.get('/profile/', autenticacion, (req, res) => {
    
 app.post('/api/usuarios/', postUsuarios )
 app.post('/api/login/', loginView)
+app.post('/api/sessions/githubcallback', antenticacionPorGithub_CB, (req, res, next) => { res.redirect('/api/session/githubcallback') })
 
 
+try {githubRouter}catch (error) { console.log(error)}
+
+app.get('/api/session/githubcallback', (req, res) => {
+
+  res.render('login', { pageTitle: 'login', usuarios: JSON.stringify(req.session.usuarios)
+})
+})
+
+
+
+app.use("/auth", passport.authenticate ("github", {scope: ["user:email"]}))
+
+app.use("/auth/callback", passport.authenticate ("github", {failureRedirect: "/login"}), (req, res) => {
+  res.redirect("/")
+})
 
 
 
