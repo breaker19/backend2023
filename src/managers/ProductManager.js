@@ -43,6 +43,15 @@ const compararId = this.products.find(product => product.id === id)
         });
         return id + 1;
     }
+    //eliminar producto sin id 
+    deleteProduct(id)
+    {
+        const product = this.getProduct(id);
+        if (product) {
+            this.products = this.products.filter(product => product.id !== id);
+        }
+    }
+    deleteProduct(id)
 
     
 }

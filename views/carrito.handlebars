@@ -1,14 +1,43 @@
+<style>
+  .cart-grid {
+    display: grid;
+  
+    grid-gap: 20px;
+  }
+  
+  .cart-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background-color: #f9f9f9;
+    padding: 10px;
+    border-radius: 5px;
+  }
+  
+  
+  .cart-item-details {
+    font-size: 14px;
+  }
+</style>
+<h2 style="font-size:30px; text-align:center; color:#000;">Este es el detalle de tu carrito:</h2>
 {{#if cartItems}}
-  <ul>
+  <div class="cart-grid">
     {{#each cartItems}}
-      <li style="margin-top:30px">
-       <strong>seleccionado:</strong>  {{producto}} -<br>
-       <strong> precio del producto:</strong>{{precio}} -<br>
-     <strong>id del producto: </strong> {{productId}}
-     <strong>Stock:</strong> {{stock}}
-      </li>
+      <div class="cart-item">
+        <div class="cart-item-details">
+          <strong>Producto:</strong> {{producto}}<br>
+          <strong>Precio:</strong> {{precio}}<br>
+          <strong>Producto ID:</strong> {{ _id}}<br>
+          <strong>Stock:</strong> {{stock}}<br>
+          <strong>Cantidad:</strong> {{cantidad}}<br>
+          <strong>Subtotal:</strong> {{precioTotal}}
+        </div>
+      </div>
     {{/each}}
-  </ul>
+  </div>
+ <a href="/generar-ticket" class="btn-finalizar">Finalizar compra</a>
+
 {{else}}
   <p>No hay productos en el carrito</p>
 {{/if}}

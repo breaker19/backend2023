@@ -1,30 +1,19 @@
 import mongoose from "mongoose";
-import mongoosePaginate from 'mongoose-paginate-v2'
+import mongoosePaginate from 'mongoose-paginate-v2';
 import { MONGODB_CNX_STR } from '../config/mongoDb.config.js';
 
 const Schema = mongoose.Schema;
-await mongoose.connect(MONGODB_CNX_STR, {
+await mongoose.connect(MONGODB_CNX_STR);
 
+const productoSchema = new Schema({
+  productId: String,
+  producto: String,
+  precio: Number,
+  stock: Number,
 });
 
- const productosMongoose= mongoose.connection.db.collection("products");
+productoSchema.plugin(mongoosePaginate);
 
-// const productoEncontrado= await productosMongoose.findOne()
+const ProductoMongoose = mongoose.model('Product', productoSchema);
 
-export const productoSchema = new Schema({
-    productId: String,
-    producto: String,
-    precio: Number,
-    stock: Number,
-});
-    const ProductoMongoose = mongoose.model('products', productoSchema);
-  
-const matchd = await ProductoMongoose.find()
-// const deleteProducto = await ProductoMongoose.deleteMany({precio: {$gt: 300}});
-
-console.log(matchd)
-
-
-
-productoSchema.plugin(mongoosePaginate)
 export default ProductoMongoose;

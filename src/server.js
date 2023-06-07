@@ -17,6 +17,7 @@ import { githubRouter } from '../router/githubRouter.js';
 import  {usuarios}  from '../models/usuario.mongoose.js';
 import { userRouter } from '../router/userRouter.js';
 import passport from 'passport';
+import ticketRouter from '../router/ticketRouter.js';
  await mongoose.connect(MONGODB_CNX_STR, {
 
 });
@@ -24,8 +25,10 @@ import passport from 'passport';
 
 const app = express()
 app.use("/", productRouter);
+
 app.use("/api/sessions", githubRouter);
 app.use("/", userRouter)
+app.use("/", ticketRouter);
 // app.use("/", githubRouter)
 app.use(express.static('public'))
 app.use(express.json());
@@ -41,7 +44,10 @@ app.use(session({
   saveUninitialized: false
 })); 
 app.use(passportInitialize, passportSession)
-
+app.use('src/assets/style.css', (req, res, next) => {
+  res.setHeader('Content-Type', 'text/css');
+  next();
+});
 
 try {userRouter}catch (error) { console.log(error)}
 
