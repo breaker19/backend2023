@@ -32,8 +32,10 @@
           <strong>Stock:</strong> {{stock}}<br>
           <strong>Cantidad:</strong> {{cantidad}}<br>
           <strong>Subtotal:</strong> {{precioTotal}}
+               <a href="/carrito/eliminar/{{_id}}">Eliminar</a>
         </div>
       </div>
+
     {{/each}}
   </div>
  <a href="/generar-ticket" class="btn-finalizar">Finalizar compra</a>

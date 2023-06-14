@@ -10,7 +10,7 @@ import { cartUpdate} from './controllers/api/cartUpdate.js';
 import MongoStore from 'connect-mongo';
 import session from 'express-session';
 import { autenticacion } from './middlewares/autenticacion.js';
-import { cartView } from './controllers/api/cartView.js';
+import { cartView, eliminarProductoDelCarrito } from './controllers/api/cartView.js';
 import { loginView } from './controllers/web/login.controller.js';
 import { antenticacionPorGithub_CB, autenticacionPorGithub, passportInitialize, passportSession } from './middlewares/passport.js';
 import { githubRouter } from '../router/githubRouter.js';
@@ -73,7 +73,7 @@ app.get('/profile/', autenticacion, (req, res) => {
 //   console.log(req.session)
 //   res.send("ok")
 // })
-
+app.get('/carrito/eliminar/:id', eliminarProductoDelCarrito); 
    
 app.post('/api/usuarios/', postUsuarios )
 app.post('/api/login/', loginView)

@@ -27,7 +27,7 @@ if (formLogin instanceof HTMLFormElement) {
       })
 
       if (status === 201) {
-        window.location.href = '/register'
+        // window.location.href = '/register'
       } else {
         alert('Usuario o contraseña incorrectos')
       }

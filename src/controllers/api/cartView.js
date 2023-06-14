@@ -23,3 +23,13 @@ export async function cartView(req, res) {
     res.status(500).send('Error interno del servidor');
   }
 }
+export async function eliminarProductoDelCarrito(req, res) {
+  try {
+    const productId = req.params.id; // ObjectId del producto
+    await Cart.deleteOne({ productId }); // Eliminar el producto del carrito usando el ObjectId
+    res.redirect('/carrito-vista');
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('Error interno del servidor');
+  }
+}
