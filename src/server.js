@@ -18,6 +18,7 @@ import  {usuarios}  from '../models/usuario.mongoose.js';
 import { userRouter } from '../router/userRouter.js';
 import passport from 'passport';
 import ticketRouter from '../router/ticketRouter.js';
+import sessionConfig from './middlewares/session.js';
  await mongoose.connect(MONGODB_CNX_STR, {
 
 });
@@ -27,29 +28,41 @@ const app = express()
 app.use("/", productRouter);
 
 app.use("/api/sessions", githubRouter);
-app.use("/", userRouter)
+
 app.use("/", ticketRouter);
 // app.use("/", githubRouter)
 app.use(express.static('public'))
 app.use(express.json());
-app.engine('handlebars', engine())
-app.set('views', './views')
-app.set('view engine', 'handlebars')
-
-
+app.use(sessionConfig); 
 app.use(session({
   store: MongoStore.create({ mongoUrl: MONGODB_CNX_STR }),
   secret: 'SESSION_SECRET',
   resave: false,
   saveUninitialized: false
 })); 
+app.use("/", userRouter)
 app.use(passportInitialize, passportSession)
 app.use('src/assets/style.css', (req, res, next) => {
   res.setHeader('Content-Type', 'text/css');
   next();
 });
 
-try {userRouter}catch (error) { console.log(error)}
+app.engine('handlebars', engine())
+app.set('views', './views')
+app.set('view engine', 'handlebars')
+
+app.get('/register/', registroUsuario);
+
+
+//esperar a que se conecte a la base de datos para luego que se guarden los datos
+
+
+  
+
+
+
+
+
 
 app.get('/listados/', listarProductos, autenticacion)
 app.get('/carrito/', cartUpdate);
@@ -73,9 +86,9 @@ app.get('/profile/', autenticacion, (req, res) => {
 //   console.log(req.session)
 //   res.send("ok")
 // })
-app.get('/carrito/eliminar/:id', eliminarProductoDelCarrito); 
+app.get('/carrito/eliminar/:id', eliminarProductoDelCarrito, ); 
    
-app.post('/api/usuarios/', postUsuarios )
+
 app.post('/api/login/', loginView)
 app.post('/api/sessions/githubcallback', antenticacionPorGithub_CB, (req, res, next) => { res.redirect('/api/session/githubcallback') })
 

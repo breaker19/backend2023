@@ -1,11 +1,18 @@
-import mongoose, { version } from "mongoose";
+import mongoose from 'mongoose';
+import { MONGODB_CNX_STR } from '../config/mongoDb.config.js';
 
+const { Schema } = mongoose;
 
-const usuarioSchema = new mongoose.Schema({
-    first_name: { type: String, required: true },
-    last_name: { type: String, required: true, },
-    email:  { type: String, required: true, unique:true},
-    age: { type: Number, required: true },           
-    password:  { type: String, required: true, unique:true },
-}, {versionKey: false}); 
-export const usuarios = mongoose.model('usuarios', usuarioSchema);
+await mongoose.connect(MONGODB_CNX_STR)
+
+const usuarioSchema = new Schema({
+   
+    input_first_name: String ,
+    input_last_name: String ,
+    input_email:  String,
+    input_age: Number ,           
+    input_password:  String,
+});
+
+//guardar en la coleccion usuarios con todos los datos del usuario
+export const usuarios = mongoose.model('usuariosFinal', usuarioSchema);

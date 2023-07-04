@@ -36,7 +36,7 @@ const compararId = this.products.find(product => product.id === id)
         incrementId()
     {
         let id = 0;
-        this.products.map(product => {
+        this.products.forEach(product => {
             if (product.id > id) {
                 id = product.id;
             }
@@ -64,7 +64,7 @@ class Product
 
 const manajarProductos = new ProductManager();
 
-manajarProductos.addProduct
+// ProductManager.addProduct(new Product(1, "El principito", 500, "Antoine de Saint-Exupéry", "El principito es una novela corta y la obra más famosa del escritor y aviador francés Antoine de Saint-Exupéry", "Libros", "https://images-na.ssl-images-amazon.com/images/I/51QXWVezrVL._SX331_BO1,204,203,200_.jpg"))
 
 
 

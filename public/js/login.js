@@ -4,8 +4,8 @@ if (formLogin instanceof HTMLFormElement) {
   formLogin.addEventListener('submit', async event => {
     event.preventDefault()
 
-    const input_email = document.querySelector('#input_email')
-    const input_password = document.querySelector('#input_password')
+    const input_email = document.querySelector('#email')
+    const input_password = document.querySelector('#password')
 
     if (
       input_email instanceof HTMLInputElement &&
@@ -27,7 +27,7 @@ if (formLogin instanceof HTMLFormElement) {
       })
 
       if (status === 201) {
-        // window.location.href = '/register'
+        window.location.href = '/register'
       } else {
         alert('Usuario o contraseña incorrectos')
       }
