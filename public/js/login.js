@@ -1,11 +1,11 @@
-const formLogin = document.querySelector('#formLogin')
+const formLogin = document.getElementById('formLogin')
 
 if (formLogin instanceof HTMLFormElement) {
   formLogin.addEventListener('submit', async event => {
     event.preventDefault()
 
-    const input_email = document.querySelector('#email')
-    const input_password = document.querySelector('#password')
+    const input_email = document.getElementById('input_email')
+    const input_password = document.getElementById('input_password')
 
     if (
       input_email instanceof HTMLInputElement &&
