@@ -9,7 +9,7 @@ export async function postUsuarios(req, res, next) {
       input_last_name: input_last_name,
       input_email: input_email,
       input_age: input_age,
-      input_password: input_password,
+      input_password: input_password,  
     });
 
     req.session.usuarios = {

@@ -114,7 +114,7 @@ app.use("/auth/callback", passport.authenticate ("github", {failureRedirect: "/l
 
 
 const server = app.listen(3004)
-
+export {app}
 server.on('listening', () => {
   console.log('Servidor escuchando en puerto 3004')
 })

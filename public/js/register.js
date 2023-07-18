@@ -9,7 +9,7 @@ if (formRegister instanceof HTMLFormElement) {
     const input_age = document.getElementById('input_age')
     const input_password = document.getElementById('input_password')
 
-    if (
+    if ( 
       input_first_name instanceof HTMLInputElement &&
       input_last_name instanceof HTMLInputElement &&
       input_email instanceof HTMLInputElement &&
