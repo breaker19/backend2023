@@ -10,9 +10,10 @@ ticketRouter.get('/generar-ticket', async (req, res) => {
 
     // Calcular el monto total del carrito
     let totalAmount = 0;
-    for (const item of cartItems) {
-      totalAmount += item.precioTotal;
-    }
+    cartItems.forEach((item) => {
+      totalAmount += item.subtotal;
+    });
+    
 
     // Generar el ticket
     const ticket = {

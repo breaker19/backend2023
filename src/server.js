@@ -1,7 +1,7 @@
 import express, { Router } from 'express'
 import { productRouter } from '../router/productRouter.js';
 import { engine } from 'express-handlebars'
-import { postUsuarios } from './controllers/api/usuarios.controllers.js';
+import { postLogin, postUsuarios } from './controllers/api/usuarios.controllers.js';
 import { registroUsuario } from './controllers/web/registro.controller.js';
 import mongoose from 'mongoose';
 import { MONGODB_CNX_STR } from '../config/mongoDb.config.js';
@@ -10,7 +10,7 @@ import { cartUpdate} from './controllers/api/cartUpdate.js';
 import MongoStore from 'connect-mongo';
 import session from 'express-session';
 import { autenticacion } from './middlewares/autenticacion.js';
-import { cartView, eliminarProductoDelCarrito } from './controllers/api/cartView.js';
+import { cartView, eliminarProductoDelCarrito, eliminarTodosProductoDelCarrito } from './controllers/api/cartView.js';
 import { loginView } from './controllers/web/login.controller.js';
 import { antenticacionPorGithub_CB, autenticacionPorGithub, passportInitialize, passportSession } from './middlewares/passport.js';
 import { githubRouter } from '../router/githubRouter.js';
@@ -19,6 +19,7 @@ import { userRouter } from '../router/userRouter.js';
 import passport from 'passport';
 import ticketRouter from '../router/ticketRouter.js';
 import sessionConfig from './middlewares/session.js';
+import { PORT } from './config.server.js';
  await mongoose.connect(MONGODB_CNX_STR, {
 
 });
@@ -36,7 +37,7 @@ app.use(express.json());
 app.use(sessionConfig); 
 app.use(session({
   store: MongoStore.create({ mongoUrl: MONGODB_CNX_STR }),
-  secret: 'SESSION_SECRET',
+  secret: 'SESSION_SECRET', 
   resave: false,
   saveUninitialized: false
 })); 
@@ -56,21 +57,26 @@ app.get('/register/', registroUsuario);
 
 //esperar a que se conecte a la base de datos para luego que se guarden los datos
 
-
-  
-
-
-
-
-
-
 app.get('/listados/', listarProductos, autenticacion)
 app.get('/carrito/', cartUpdate);
 app.get('/carrito/:id', cartUpdate);
+// app.get('/bienvenida/', (req, res) => {
+//   try {
+//     // Obtener la información del usuario desde req.session.usuarios
+//     const usuario = req.session.usuarios;
+
+//     // Renderizar la vista bienvenida.handlebars y pasar la información del usuario
+//     res.render('bienvenida', { pageTitle: 'Bienvenida', usuarios: usuario });
+//   } catch (error) {
+//     // Manejar errores en caso de que ocurra alguno
+//     console.log(error);
+//     res.status(500).json({ message: 'Error interno del servidor' });
+//   }
+// });
 
 app.get('/carrito-vista', cartView);
 app.get('/login', loginView);
-
+app.post('/api/login/', postLogin)
 app.get('/github', autenticacionPorGithub)
 app.get('/githubcallback', antenticacionPorGithub_CB, (req, res, next) => 
 { res.redirect('/')
@@ -87,9 +93,10 @@ app.get('/profile/', autenticacion, (req, res) => {
 //   res.send("ok")
 // })
 app.get('/carrito/eliminar/:id', eliminarProductoDelCarrito, ); 
+app.get('/carrito/eliminar/', eliminarTodosProductoDelCarrito, );
    
 
-app.post('/api/login/', loginView)
+
 app.post('/api/sessions/githubcallback', antenticacionPorGithub_CB, (req, res, next) => { res.redirect('/api/session/githubcallback') })
 
 
@@ -113,9 +120,5 @@ app.use("/auth/callback", passport.authenticate ("github", {failureRedirect: "/l
 
 
 
-const server = app.listen(3004)
-export {app}
-server.on('listening', () => {
-  console.log('Servidor escuchando en puerto 3004')
-})
-
+const server = app.listen(PORT, '0.0.0.0', () => { console.log(`escuchando en ${server.address().port}`) })
+ 

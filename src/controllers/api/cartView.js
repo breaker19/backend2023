@@ -33,3 +33,13 @@ export async function eliminarProductoDelCarrito(req, res) {
     res.status(500).send('Error interno del servidor');
   }
 }
+export async function eliminarTodosProductoDelCarrito(req, res) {
+  try {
+    //ELIMINAR TODOS LOS PRODUCTOS DEL CARRITO
+    await Cart.deleteMany({}); // Eliminar todos los productos del carrito
+    res.redirect('/carrito-vista');
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('Error interno del servidor');
+  }
+}
