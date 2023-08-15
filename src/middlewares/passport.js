@@ -38,7 +38,7 @@ passport.use('github', new GithubStrategy({
     done(null, user)
 }))
 
-// esto lo tengo que agregar para que funcione passport! copiar y pegar, nada mas.
+
 passport.serializeUser((user, next) => { next(null, user) })
 passport.deserializeUser((user, next) => { next(null, user) })
 

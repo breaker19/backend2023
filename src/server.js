@@ -53,6 +53,9 @@ app.set('views', './views')
 app.set('view engine', 'handlebars')
 
 app.get('/register/', registroUsuario);
+app.get('/', (req, res) => {
+  res.render('inicio', { pageTitle: 'Home' })
+})
 
 
 //esperar a que se conecte a la base de datos para luego que se guarden los datos
@@ -60,19 +63,7 @@ app.get('/register/', registroUsuario);
 app.get('/listados/', listarProductos, autenticacion)
 app.get('/carrito/', cartUpdate);
 app.get('/carrito/:id', cartUpdate);
-// app.get('/bienvenida/', (req, res) => {
-//   try {
-//     // Obtener la información del usuario desde req.session.usuarios
-//     const usuario = req.session.usuarios;
 
-//     // Renderizar la vista bienvenida.handlebars y pasar la información del usuario
-//     res.render('bienvenida', { pageTitle: 'Bienvenida', usuarios: usuario });
-//   } catch (error) {
-//     // Manejar errores en caso de que ocurra alguno
-//     console.log(error);
-//     res.status(500).json({ message: 'Error interno del servidor' });
-//   }
-// });
 
 app.get('/carrito-vista', cartView);
 app.get('/login', loginView);
@@ -88,10 +79,7 @@ app.get('/register/', registroUsuario)
 app.get('/profile/', autenticacion, (req, res) => {
  res.render('profile', { pageTitle: 'Profile', usuarios: JSON.stringify(req.session.usuarios)})
 })
-// app.get("/api/sessions/githubcallback", (req, res, next) => {
-//   console.log(req.session)
-//   res.send("ok")
-// })
+
 app.get('/carrito/eliminar/:id', eliminarProductoDelCarrito, ); 
 app.get('/carrito/eliminar/', eliminarTodosProductoDelCarrito, );
    

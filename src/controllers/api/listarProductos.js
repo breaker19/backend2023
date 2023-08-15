@@ -5,10 +5,9 @@ export async function listarProductos(req, res) {
   try {
     const productosdos = await ProductoMongoose.find().lean();
 
-    // Filtrar productos no deseados
+    
     const productosFiltrados = productosdos.filter(producto => {
-      // Aplica aquí tu lógica de filtrado, por ejemplo:
-      // Si el producto cumple ciertas condiciones, lo mantienes en la lista
+  
       return producto.precio > 10;
     });
 

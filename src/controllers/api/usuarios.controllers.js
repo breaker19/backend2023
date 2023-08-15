@@ -42,7 +42,7 @@ export async function postLogin(req, res, next) {
     console.log('Contraseña ingresada por el usuario:', input_password);
 
     if (!usuario || usuario.input_password !== input_password) {
-      // Si el usuario no existe o la contraseña es incorrecta, retornar un código de estado 401 (No autorizado)
+      // Si el usuario no existe o la contraseña es incorrecta
       return res.status(401).json({ message: 'Usuario o contraseña incorrectos' });
     }
 
@@ -56,10 +56,7 @@ export async function postLogin(req, res, next) {
 
     console.log('Datos del usuario en la sesión:', req.session.usuarios);
 
-    // Retornar un código de estado 200 (OK) para indicar que el login fue exitoso
-    // res.status(200).json({ message: 'Login exitoso', user: req.session.usuarios });
-
-    // En lugar de enviar una respuesta JSON, redirigir a la página de bienvenida
+  
     res.redirect('/bienvenida');
   } catch (error) {
     next(error);

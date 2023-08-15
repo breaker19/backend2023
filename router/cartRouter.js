@@ -12,7 +12,7 @@ cartRouter.get("/cart", async (req, res) => {
     }
 );
 
-//al cart.json con id 1 agregarle el producto de products.json con el id que le pasamos por query usando en la ruta cid para identificar el id del cart
+
 cartRouter.get("/cart/:cid", async (req, res) => {
     const { cid } = req.params;
     const { id } = req.query;

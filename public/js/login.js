@@ -28,11 +28,11 @@ formLogin.addEventListener('submit', async event => {
         // Login exitoso, redireccionar a la página de bienvenida
         window.location.href = '/bienvenida';
       } else {
-        // Manejar errores en caso de que la solicitud no sea exitosa
+        // en caso de que la solicitud no sea exitosa
         alert('Usuario o contraseña incorrectos');
       }
     } catch (error) {
-      // Mostrar el error en la consola para fines de depuración
+  
       console.log(error);
     }
   }

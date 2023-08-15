@@ -27,7 +27,7 @@ productRouter.get('/productos', async (req, res) => {
 //mostrar en la url /todos los productos que se ven con el archivo mongoose.js
 productRouter.get("/todos", async (req, res) => {
   try {
-    const productos = await ProductoMongoose.find(); // Obtener todos los productos utilizando el modelo Producto
+    const productos = await ProductoMongoose.find(); 
     res.status(200).json(productos); // Enviar los productos como respuesta en formato JSON
   } catch (error) {
     console.log(error);
@@ -36,22 +36,15 @@ productRouter.get("/todos", async (req, res) => {
 });
 
 productRouter.get('/productosFiltrados', async (req, res) => {
-  //obtener los productos con precio mayor a 1000
+  
   try {
-    const productos = await ProductoMongoose.find({precio: {$gt: 600}}); // Obtener todos los productos utilizando el modelo Producto
-    res.status(200).json(productos); // Enviar los productos como respuesta en formato JSON
+    const productos = await ProductoMongoose.find({precio: {$gt: 600}}); // Obtener todos 
+    res.status(200).json(productos); 
   } catch (error) {
     console.log(error);
     res.status(500).json({ error: "Error al obtener los productos" });
   }
 });
- 
-//  productRouter.post('/productos', async (req, res, next) => {
-//   //use mongoDb.js to save the product
-//   const datos = req.body;
-//   const result = await productosDb (datos);
-//   res.send(result);
-//   next();
-// });
+
     
    

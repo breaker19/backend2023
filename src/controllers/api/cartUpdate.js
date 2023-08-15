@@ -8,10 +8,10 @@ import ProductoMongoose from '../../../dao/mongoose.js';
 import { cartView } from './cartView.js';
 import mongoose from "mongoose";
 
-// Establece la conexión a la base de datos
+
 await mongoose.connect(MONGODB_CNX_STR, {});
 
-// Crea el store de MongoStore
+
 const store = MongoStore.create({
   mongoUrl: MONGODB_CNX_STR,
 });
@@ -30,7 +30,6 @@ export async function cartUpdate(req, res) {
     const producto = await ProductoMongoose.findById(productId).lean();
 
     if (!producto) {
-      // El producto no existe, puedes manejar el caso de error aquí
       return res.status(404).send('Producto no encontrado');
     }
       
@@ -49,7 +48,4 @@ export async function cartUpdate(req, res) {
   }
 }
 
- 
-
-// Agrega la ruta cartView
 app.get('/carrito-vista', cartView);

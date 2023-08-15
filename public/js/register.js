@@ -24,7 +24,7 @@ const datosUsuario = {
         input_password: input_password.value,
       }
 
-      console.log(datosUsuario) // Agregar esta línea para depurar los datos del formulario
+      console.log(datosUsuario) 
 
       const options = {
         method: 'POST',
@@ -39,15 +39,15 @@ const datosUsuario = {
         const response = await fetch('/api/usuarios', options)
         const usuarioCreado = await response.json()
 
-        console.log(usuarioCreado) // Agregar esta línea para depurar la respuesta de la solicitud
+        console.log(usuarioCreado) 
 
         if (response.ok) {
           window.location.href = '/login'
         } else {
-          // Manejar errores en caso de que la solicitud no sea exitosa
+          //en caso de que la solicitud no sea exitosa
         }
       } catch (error) {
-        console.log(error) // Mostrar el error en la consola para fines de depuración
+        console.log(error) 
       }
     }
   })
