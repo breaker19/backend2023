@@ -82,7 +82,9 @@ app.get('/profile/', autenticacion, (req, res) => {
 
 app.get('/carrito/eliminar/:id', eliminarProductoDelCarrito, ); 
 app.get('/carrito/eliminar/', eliminarTodosProductoDelCarrito, );
-   
+app.get("/gracias", (req, res) => {
+  res.render("gracias", { pageTitle: "Gracias" });
+});
 
 
 app.post('/api/sessions/githubcallback', antenticacionPorGithub_CB, (req, res, next) => { res.redirect('/api/session/githubcallback') })

@@ -6,7 +6,8 @@ import { postUsuarios, postLogin  } from '../src/controllers/api/usuarios.contro
 export const userRouter = Router();
 
 userRouter.get('/api/usuarios/', async (req, res) => {
-  const verUsuarios = await usuarios.find();
+  const verUsuarios = await usuarios.find({}, { input_first_name: 1, input_email: 1, _id: 0 });;
+    res.render('ver-usuarios', { usuarios: verUsuarios });
   res.json(verUsuarios);
 });
 userRouter.get('/api/login', (req, res) => {
