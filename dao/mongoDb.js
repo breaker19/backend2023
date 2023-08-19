@@ -8,4 +8,4 @@ console.log(productoEncontrado)
  await  client.close();
 
  export default productosDb
- 
+  

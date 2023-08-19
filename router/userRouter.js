@@ -10,7 +10,7 @@ userRouter.get('/api/usuarios/', async (req, res) => {
     res.render('ver-usuarios', { usuarios: verUsuarios });
   res.json(verUsuarios);
 });
-userRouter.get('/api/login', (req, res) => {
+userRouter.get('/api/login', (req, res) => { 
   const loginUser = req.session.usuarios;
   res.json(loginUser);
 });
