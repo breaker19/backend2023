@@ -81,7 +81,7 @@ app.get('/profile/', autenticacion, (req, res) => {
 })
 
 app.get('/carrito/eliminar/:id', eliminarProductoDelCarrito, ); 
-app.get('/carrito/eliminar/', eliminarTodosProductoDelCarrito, );
+app.get('/carrito/eliminartodos/', eliminarTodosProductoDelCarrito, );
 app.get("/gracias", (req, res) => {
   res.render("gracias", { pageTitle: "Gracias" });
 });

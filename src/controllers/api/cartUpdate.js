@@ -28,6 +28,7 @@ export async function cartUpdate(req, res) {
   try {
     const productId = req.params.id;
     const producto = await ProductoMongoose.findById(productId).lean();
+    
 
     if (!producto) {
       return res.status(404).send('Producto no encontrado');

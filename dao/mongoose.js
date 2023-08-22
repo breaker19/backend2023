@@ -12,6 +12,7 @@ const productoSchema = new Schema({
   stock: Number,
 });
 
+
 productoSchema.plugin(mongoosePaginate);
 
 const ProductoMongoose = mongoose.model('Product', productoSchema);
