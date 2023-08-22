@@ -6,10 +6,19 @@ import { postUsuarios, postLogin  } from '../src/controllers/api/usuarios.contro
 export const userRouter = Router();
 
 userRouter.get('/api/usuarios/', async (req, res) => {
-  const verUsuarios = await usuarios.find({}, { input_first_name: 1, input_email: 1, _id: 0 });;
-    res.render('ver-usuarios', { usuarios: verUsuarios });
-  res.json(verUsuarios);
+  try {
+    // Verificar si el usuario tiene el correo electrónico específico
+    if (req.session.usuarios && req.session.usuarios.input_email === 'sebakarp26@gmail.com') {
+      const verUsuarios = await usuarios.find();
+      res.json(verUsuarios);
+    } else {
+      res.status(403).json({ message: 'Acceso denegado' });
+    }
+  } catch (error) {
+    res.status(500).json({ message: 'Error interno del servidor' });
+  }
 });
+
 userRouter.get('/api/login', (req, res) => { 
   const loginUser = req.session.usuarios;
   res.json(loginUser);
